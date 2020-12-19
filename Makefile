@@ -87,10 +87,10 @@ endif
 
 define Build/Prepare
 	$(foreach po,$(wildcard ${CURDIR}/files/luci/i18n/*.po), po2lmo $(po) $(PKG_BUILD_DIR)/$(patsubst %.po,%.lmo,$(notdir $(po)));)
-	[ ! -f $(PKG_BUILD_DIR)/XRAY-$(PKG_VERSION)-$(PKG_ARCH_XRAY).zip ] && proxychains wget https://github.com/xtls/xray-core/releases/download/$(PKG_VERSION)/xray-$(PKG_ARCH_XRAY).zip -O $(PKG_BUILD_DIR)/xray-$(PKG_VERSION)-$(PKG_ARCH_XRAY).zip
+	[ ! -f $(PKG_BUILD_DIR)/XRAY-$(PKG_VERSION)-$(PKG_ARCH_XRAY).zip ] && wget https://github.com/xtls/xray-core/releases/download/$(PKG_VERSION)/xray-$(PKG_ARCH_XRAY).zip -O $(PKG_BUILD_DIR)/xray-$(PKG_VERSION)-$(PKG_ARCH_XRAY).zip
 	unzip -o $(PKG_BUILD_DIR)/xray-$(PKG_VERSION)-$(PKG_ARCH_XRAY).zip -d $(PKG_BUILD_DIR)
-	proxychains wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -O $(PKG_BUILD_DIR)/geoip.dat
-	proxychains wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -O $(PKG_BUILD_DIR)/geosite.dat
+	wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -O $(PKG_BUILD_DIR)/geoip.dat
+	wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -O $(PKG_BUILD_DIR)/geosite.dat
 endef
 
 define Build/Configure
